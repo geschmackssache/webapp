@@ -11,7 +11,7 @@ export default Ember.Route.extend({
   renderTemplate: function() {
     this._super();
     this.render('cart', {
-      into: 'index',
+      into: 'application',
       outlet: 'cart',
       controller: this.controllerFor('cart')
     });
