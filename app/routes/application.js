@@ -7,6 +7,7 @@ export default Ember.Route.extend({
   setupController: function(controller, model) {
     controller.set('model', model);
     this.controllerFor('cart').set('model', model.get('user').get('cart'));
+    this.controllerFor('products').set('model', this.store.all('product'));
   },
   renderTemplate: function() {
     this._super();
@@ -14,6 +15,11 @@ export default Ember.Route.extend({
       into: 'application',
       outlet: 'cart',
       controller: this.controllerFor('cart')
+    });
+    this.render('products', {
+      into: 'application',
+      outlet: 'products',
+      controller: this.controllerFor('products')
     });
   }
 });
